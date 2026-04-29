@@ -1,0 +1,22 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+IndentCaseLabels: false
+NamespaceIndentation: None
+ColumnLimit: 80
+
+BreakBeforeBraces: Linux
+
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+
+SortIncludes: true
+IncludeBlocks: Preserve
