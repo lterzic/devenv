@@ -1,0 +1,58 @@
+# python/ruff.toml
+# Ruff: linter + formatter for Python (replaces black, isort, flake8)
+# Docs: https://docs.astral.sh/ruff/
+
+line-length = 88      # Black/Ruff default; each language follows its own community standard
+indent-width = 4
+target-version = "py311"  # adjust to the oldest Python version the project must support
+
+[lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes (unused imports, undefined names)
+    "I",    # isort (import ordering)
+    "N",    # pep8-naming (naming conventions)
+    "UP",   # pyupgrade (modernise syntax — analogous to modernize-*)
+    "B",    # flake8-bugbear (likely bugs — analogous to bugprone-*)
+    "C4",   # flake8-comprehensions
+    "SIM",  # flake8-simplify
+    "PERF", # perflint (performance anti-patterns — analogous to performance-*)
+    "RUF",  # ruff-specific rules
+    "S",    # flake8-bandit (security — analogous to cert-* for Python)
+    "PLR",  # pylint refactor (complexity: too-many-branches, too-many-arguments)
+    "PLE",  # pylint errors (genuine bugs not covered by existing rules)
+    "TRY",  # tryceratops (exception handling anti-patterns)
+    "ERA",  # eradicate (commented-out code — stale code is a hazard in safety-critical systems)
+]
+
+ignore = [
+    "E501",    # line-too-long — formatter enforces this; linter warning is redundant
+    "B008",    # function-call-in-default-argument — common in FastAPI/DI patterns
+    "SIM108",  # ternary-instead-of-if-else — readability is subjective
+    "S101",    # assert — suppress globally; tests/* adds this via per-file-ignores
+    "PLR0913", # too-many-arguments — data-heavy code legitimately has many params
+    "PLR2004", # magic-value-comparison — too noisy; suppressed like readability-magic-numbers in C++
+    "TRY003",  # long-messages-outside-exception-class — too opinionated
+    "TRY301",  # abstract-raise-to-inner-function — too restrictive
+]
+
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+_*))$"
+
+[lint.per-file-ignores]
+"tests/**" = ["N802", "N803", "S101", "PLR2004"]  # relax naming and magic-value rules in test files
+
+[lint.pep8-naming]
+classmethod-decorators = ["classmethod"]
+
+[lint.isort]
+force-sort-within-sections = false
+known-first-party = []          # populate with your project's package names
+split-on-trailing-comma = true  # keep trailing-comma imports split; consistent with skip-magic-trailing-comma = false
+combine-as-imports = true       # from foo import bar, baz as qux (more compact)
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"    # matches mixed-line-ending: lf in pre-commit hooks
