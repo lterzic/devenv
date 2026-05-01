@@ -1,0 +1,39 @@
+# EditorConfig — https://editorconfig.org
+# Mirrors formatter settings so editors apply the same indentation/line endings on save.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{c,cpp,h,hpp,cc,cxx,hxx}]
+indent_style = space
+indent_size = 4
+max_line_length = 80
+
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 88
+
+[*.{yaml,yml,toml,json}]
+indent_style = space
+indent_size = 2
+
+[*.{md,rst,txt}]
+trim_trailing_whitespace = false
+max_line_length = off
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+[CMakeLists.txt]
+indent_style = space
+indent_size = 2
+
+[*.cmake]
+indent_style = space
+indent_size = 2
