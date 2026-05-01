@@ -13,10 +13,12 @@ BreakBeforeBraces: Linux
 
 PointerAlignment: Left
 ReferenceAlignment: Left
+QualifierAlignment: Left
 
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
+SpaceBeforeCpp11BracedList: true
 
 SortIncludes: true
 IncludeBlocks: Preserve

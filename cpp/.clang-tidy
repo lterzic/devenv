@@ -1,18 +1,41 @@
 Checks: >
   bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  concurrency-*,
   cppcoreguidelines-*,
+  hicpp-*,
+  misc-const-correctness,
+  misc-misplaced-const,
+  misc-no-recursion,
+  misc-non-copyable-objects,
+  misc-static-assert,
+  misc-throw-by-value-catch-by-reference,
+  misc-uniqueptr-reset-release,
+  misc-unused-parameters,
   modernize-*,
   performance-*,
   readability-*,
+  -cert-dcl50-cpp,
+  -cert-err58-cpp,
   -cppcoreguidelines-avoid-magic-numbers,
   -cppcoreguidelines-pro-bounds-pointer-arithmetic,
   -cppcoreguidelines-pro-type-reinterpret-cast,
+  -hicpp-avoid-goto,
+  -hicpp-braces-around-statements,
+  -hicpp-no-array-decay,
+  -hicpp-signed-bitwise,
+  -hicpp-use-auto,
+  -hicpp-vararg,
   -modernize-use-trailing-return-type,
-  -readability-magic-numbers,
-  -readability-identifier-length
+  -readability-avoid-const-params-in-decls,
+  -readability-identifier-length,
+  -readability-magic-numbers
 
 HeaderFilterRegex: '.*'
 FormatStyle: file
+WarningsAsErrors: '*'
+UseColor: true
 
 CheckOptions:
   - { key: readability-identifier-naming.NamespaceCase,         value: lower_case }
@@ -20,6 +43,11 @@ CheckOptions:
   - { key: readability-identifier-naming.StructCase,            value: lower_case }
   - { key: readability-identifier-naming.FunctionCase,          value: lower_case }
   - { key: readability-identifier-naming.VariableCase,          value: lower_case }
+  - { key: readability-identifier-naming.ParameterCase,         value: lower_case }
+  - { key: readability-identifier-naming.LocalVariableCase,     value: lower_case }
+  - { key: readability-identifier-naming.MemberCase,            value: lower_case }
+  - { key: readability-identifier-naming.PublicMemberCase,      value: lower_case }
+  - { key: readability-identifier-naming.StaticVariableCase,    value: lower_case }
   - { key: readability-identifier-naming.TypedefCase,           value: lower_case }
   - { key: readability-identifier-naming.TypeAliasCase,         value: lower_case }
 
@@ -28,6 +56,8 @@ CheckOptions:
 
   - { key: readability-identifier-naming.ConstexprVariableCase, value: UPPER_CASE }
   - { key: readability-identifier-naming.GlobalConstantCase,    value: UPPER_CASE }
+  - { key: readability-identifier-naming.ConstantCase,          value: UPPER_CASE }
+  - { key: readability-identifier-naming.StaticConstantCase,    value: UPPER_CASE }
   - { key: readability-identifier-naming.EnumConstantCase,      value: UPPER_CASE }
   - { key: readability-identifier-naming.MacroDefinitionCase,   value: UPPER_CASE }
 
