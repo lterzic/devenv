@@ -6,6 +6,8 @@ IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 IndentCaseLabels: false
+IndentAccessModifiers: false
+AccessModifierOffset: 0
 NamespaceIndentation: None
 ColumnLimit: 80
 
@@ -19,6 +21,7 @@ AlwaysBreakTemplateDeclarations: Yes
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
 SpaceBeforeCpp11BracedList: true
 
 SortIncludes: true
