@@ -56,6 +56,32 @@ cmake -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 The hook expects the file at `build/compile_commands.json`.
 
+#### Excluding files and directories
+
+**Git submodules are excluded automatically.** Pre-commit only runs on files tracked in the current repository; submodule contents are not tracked, so they are never passed to any hook.
+
+For directories that are checked in directly (e.g. `third_party/`, `vendor/`), add an `exclude` regex to the clang-tidy hook in `.pre-commit-config.yaml`:
+
+```yaml
+- id: clang-tidy
+  exclude: ^third_party/
+```
+
+Multiple paths can be combined with `|`:
+
+```yaml
+- id: clang-tidy
+  exclude: ^(third_party|extern|generated)/
+```
+
+As a fallback, you can also place a `.clang-tidy` file inside any subdirectory with all checks disabled. Clang-tidy merges per-directory configs with the root one, and a local `Checks: "-*"` overrides the parent:
+
+```yaml
+# third_party/.clang-tidy
+Checks: "-*"
+InheritParentConfig: false
+```
+
 ### Python
 
 Copy `python/ruff.toml` and `python/mypy.ini` to your project root.

@@ -29,7 +29,7 @@ install-cpp: ## Copy C++ configs (.clang-format, .clang-tidy) to DEST
 	cp cpp/.clang-format $(_dest)/.clang-format
 	cp cpp/.clang-tidy $(_dest)/.clang-tidy
 
-install-python: ## Copy Python configs to DEST/python/
+install-python: ## Copy Python configs to DEST/
 	cp python/ruff.toml $(_dest)/ruff.toml
 	cp python/mypy.ini $(_dest)/mypy.ini
 	@echo "Set known-first-party in $(_dest)/ruff.toml to your package name."
@@ -41,4 +41,4 @@ $(_precommit): $(_pip)
 	$(_pip) install --quiet pre-commit
 
 $(_pip):
-	$(PYTHON) -m venv $(_venv)
+	$(error No venv found at $(_venv), please specify the path using VENV=<path>)
