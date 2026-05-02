@@ -1,6 +1,8 @@
+# Full config for CI — includes clang-analyzer-* (3-5x slower)
 Checks: >
   bugprone-*,
   cert-*,
+  clang-analyzer-*,
   concurrency-*,
   cppcoreguidelines-*,
   hicpp-*,

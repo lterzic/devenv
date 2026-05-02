@@ -31,8 +31,7 @@ repos:
         types_or: [c, c++]
 
   # clang-tidy (local hook — needs your build's compile_commands.json)
-  # Note: clang-analyzer-* checks are 3-5x slower; consider running tidy without them locally
-  # and enabling the full config only in CI.
+  # Uses .clang-tidy (fast, no clang-analyzer). For CI, pass --config-file=.clang-tidy.ci
   - repo: local
     hooks:
       - id: clang-tidy

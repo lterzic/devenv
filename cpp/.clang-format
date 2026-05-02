@@ -15,6 +15,7 @@ PointerAlignment: Left
 ReferenceAlignment: Left
 QualifierAlignment: Left
 
+AlwaysBreakTemplateDeclarations: Yes
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
@@ -22,3 +23,5 @@ SpaceBeforeCpp11BracedList: true
 
 SortIncludes: true
 IncludeBlocks: Preserve
+
+FixNamespaceComments: false
