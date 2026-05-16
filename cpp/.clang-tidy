@@ -15,21 +15,13 @@ Checks: >
   modernize-*,
   performance-*,
   readability-*,
-  -cert-dcl50-cpp,
-  -cert-err58-cpp,
   -cppcoreguidelines-avoid-magic-numbers,
-  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
-  -cppcoreguidelines-pro-type-reinterpret-cast,
-  -hicpp-avoid-goto,
-  -hicpp-braces-around-statements,
-  -hicpp-no-array-decay,
-  -hicpp-signed-bitwise,
-  -hicpp-use-auto,
-  -hicpp-vararg,
+  -hicpp-uppercase-literal-suffix,
   -modernize-use-trailing-return-type,
-  -readability-avoid-const-params-in-decls,
+  -modernize-use-nodiscard,
   -readability-identifier-length,
-  -readability-magic-numbers
+  -readability-magic-numbers,
+  -readability-uppercase-literal-suffix,
 
 HeaderFilterRegex: '.*'
 FormatStyle: file

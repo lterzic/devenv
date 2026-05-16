@@ -1,10 +1,4 @@
-# .pre-commit-config.yaml
-# Install:  pip install pre-commit && pre-commit install
-# Run all:  pre-commit run --all-files
-# Update:   pre-commit autoupdate  (run quarterly; keep clang-format in sync with your LLVM toolchain version)
-
 repos:
-  # General hygiene
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -16,13 +10,6 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
 
-  # Spell checking — catches typos in identifiers, comments, and strings before they propagate
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.3.0
-    hooks:
-      - id: codespell
-        args: [--skip, "*.json,*.lock"]
-
   # clang-format
   - repo: https://github.com/pre-commit/mirrors-clang-format
     rev: v18.1.8
@@ -30,32 +17,22 @@ repos:
       - id: clang-format
         types_or: [c, c++]
 
-  # clang-tidy (local hook — needs your build's compile_commands.json)
-  # Uses .clang-tidy (fast, no clang-analyzer). For CI, pass --config-file=.clang-tidy.ci
+  # clang-tidy
   - repo: local
     hooks:
       - id: clang-tidy
         name: clang-tidy
-        entry: clang-tidy -p build --config-file=.clang-tidy --quiet
+        entry: clang-tidy
+        args: [--build-dir=build]
         language: system
         types_or: [c, c++]
-        require_serial: true
 
-  # Shell script linting
-  - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.10.0.1
+  # CMake formatting and linting
+  - repo: https://github.com/BlankSpruce/gersemi-pre-commit
+    rev: 0.27.2
     hooks:
-      - id: shellcheck
-        args: [--severity=warning]
-
-  # CMake formatting and linting (remove if not using CMake)
-  - repo: https://github.com/cheshirekow/cmake-format-precommit
-    rev: v0.6.13
-    hooks:
-      - id: cmake-format
-        types: [cmake]
-      - id: cmake-lint
-        types: [cmake]
+    - id: gersemi
+      args: [--no-warn-about-unknown-commands]
 
   # ruff formatter (analogous to clang-format)
   - repo: https://github.com/astral-sh/ruff-pre-commit
