@@ -32,7 +32,7 @@ repos:
     rev: 0.27.2
     hooks:
     - id: gersemi
-      args: [--no-warn-about-unknown-commands]
+      args: [-i, --no-warn-about-unknown-commands]
 
   # ruff formatter (analogous to clang-format)
   - repo: https://github.com/astral-sh/ruff-pre-commit
