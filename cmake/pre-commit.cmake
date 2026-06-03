@@ -1,0 +1,1 @@
+execute_process(COMMAND ${Python_EXECUTABLE} -m pre_commit install)
