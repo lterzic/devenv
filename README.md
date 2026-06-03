@@ -1,4 +1,4 @@
-# coding-standards
+# devenv
 
 Shared linter and formatter configurations for C++, Python, CMake, shell, and general editor hygiene. Drop these files into any project to get consistent style enforcement on every commit.
 
