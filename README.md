@@ -68,6 +68,32 @@ known-first-party = ["your_package_name"]
 
 No extra files needed — these are handled entirely by `.pre-commit-config.yaml`.
 
+### Venv + pre-commit hook via Makefile
+
+The `Makefile` sets up a project virtualenv and registers the pre-commit git
+hook. It works for any project, CMake or not, in two ways:
+
+**Included** from your own Makefile (devenv checked out as a subdirectory or
+submodule):
+
+```make
+include devenv/Makefile
+```
+
+This exposes the `venv` and `pre-commit-install` targets, plus
+`$(VENV_PYTHON)`/`$(VENV_PIP)` for your own targets to depend on.
+
+**Called directly**, no Makefile of your own required:
+
+```sh
+make -f devenv/Makefile pre-commit-install
+```
+
+Either way, `pre-commit-install` creates `.venv` (installing
+`requirements.txt` or `python/requirements.txt` if present), installs
+`pre-commit` into it, and runs `pre-commit install`. Override `VENV_DIR`,
+`PYTHON`, or `REQUIREMENTS` to customize.
+
 ## Running manually
 
 Run all hooks against every file (useful for first-time setup or CI):
